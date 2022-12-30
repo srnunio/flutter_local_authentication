@@ -1,14 +1,14 @@
 import 'package:custom_switch_widget/custom_switch_widget.dart';
 import 'package:flutter/material.dart';
 
-class AuthOptionComponent extends StatelessWidget {
+class AuthMethodComponent extends StatelessWidget {
   final String title;
   final bool isAvailable;
   final IconData iconData;
   final CustomSwitchController controller;
   final Function(bool) onChange;
 
-  AuthOptionComponent(
+  AuthMethodComponent(
       {required this.title,
       required this.iconData,
       required this.isAvailable,
@@ -40,8 +40,12 @@ class AuthOptionComponent extends StatelessWidget {
                   "Unavailable",
                   style: TextStyle(color: Colors.red, fontSize: 11.0),
                 ),
-          trailing:
-              CustomSwitchWidget(controller: controller, onChange: onAction),
+          trailing: isAvailable
+              ? CustomSwitchWidget(controller: controller, onChange: onAction)
+              : const Icon(
+                  Icons.cancel,
+                  color: Colors.red,
+                ),
         ));
   }
 }
